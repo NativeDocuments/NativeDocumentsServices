@@ -1,10 +1,11 @@
+# To build it manually:
 # sudo docker build -t nativedocumentsservices .
 # sudo docker run -d -P --name nds nativedocumentsservices
 # sudo docker run -d -p 9015:9015 -v ~/nds.license:/opt/NativeDocumentsServices/nds.license --name nds nativedocumentsservices
 
 FROM ubuntu
-ADD http://nativedocuments.wordsdk.com/downloads/NativeDocumentsServices.initd.x86_64.deb /tmp/
-RUN dpkg -i /tmp/NativeDocumentsServices.initd.x86_64.deb && rm /tmp/NativeDocumentsServices.initd.x86_64.deb
+ADD http://downloads.nativedocuments.com/NativeDocumentsServices-2.0-1.initd.x86_64.deb /tmp/
+RUN dpkg -i /tmp/NativeDocumentsServices-2.0-1.initd.x86_64.deb && rm /tmp/NativeDocumentsServices-2.0-1.initd.x86_64.deb
 ENV NDS_LOG_DIR=/var/log/NativeDocumentsServices
 ENV NDS_LOG_FILE=/dev/stdout
 ENV NDS_LICENSE=/opt/NativeDocumentsServices/nds.license
