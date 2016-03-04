@@ -12,6 +12,7 @@ ADD http://downloads.nativedocuments.com/dict/hyph_de_DE.dic /opt/NativeDocument
 ENV NDS_LOG_DIR=/var/log/NativeDocumentsServices
 ENV NDS_LOG_FILE=/dev/stdout
 ENV NDS_LICENSE=/opt/NativeDocumentsServices/nds.license
+ENV NDS_DISABLE_DOCUMENT_LOG=1
 #ENV NDS_VERBOSE=1
 ENTRYPOINT ["/opt/NativeDocumentsServices/ndsd", "service=0.0.0.0:9015"]
 EXPOSE 9015
