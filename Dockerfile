@@ -4,15 +4,14 @@
 # sudo docker run -d -p 9015:9015 -v ~/nds.license:/opt/NativeDocumentsServices/nds.license --name nds nativedocuments/nativedocumentsservices
 
 FROM ubuntu
-ADD http://downloads.nativedocuments.com/NativeDocumentsServices-2.0-15.initd.x86_64.deb /tmp/
-RUN dpkg -i /tmp/NativeDocumentsServices-2.0-15.initd.x86_64.deb && rm /tmp/NativeDocumentsServices-2.0-15.initd.x86_64.deb
+ADD http://downloads.nativedocuments.com/NativeDocumentsServices-2.0-18.initd.x86_64.deb /tmp/
+RUN dpkg -i /tmp/NativeDocumentsServices-2.0-18.initd.x86_64.deb && rm /tmp/NativeDocumentsServices-2.0-18.initd.x86_64.deb
 # OPTIONAL: add hyphenation dictionaries
 ADD http://downloads.nativedocuments.com/dict/hyph_en_US.dic /opt/NativeDocumentsServices/
 ADD http://downloads.nativedocuments.com/dict/hyph_de_DE.dic /opt/NativeDocumentsServices/
 ENV NDS_LOG_DIR=/var/log/NativeDocumentsServices
 ENV NDS_LOG_FILE=/dev/stdout
 ENV NDS_LICENSE=/opt/NativeDocumentsServices/nds.license
-ENV NDS_DISABLE_DOCUMENT_LOG=1
 #ENV NDS_VERBOSE=1
 ENTRYPOINT ["/opt/NativeDocumentsServices/ndsd", "service=0.0.0.0:9015"]
 EXPOSE 9015
